@@ -59,6 +59,7 @@ header{
 
 .card h3 {
     grid-row:2/3 ;
+    color: rgba(102, 93, 87, 0.81);
 }
 
 .card p{
@@ -123,6 +124,8 @@ form{
 
 input{
     padding-left: 10px;
+    font-size: 16px;
+    font-family: sans-serif;
 }
 
 input + span {
@@ -163,4 +166,14 @@ input + span::after{
     background-color: var(--grey-brown);
     border: 1px solid black;
     border-radius: 40px;
+}
+
+.delete-button{
+    width: 32px;
+    height: 32px;
+    background-image: url("./img/alpha-x-circle-outline.svg");
+    opacity: 0.7;
+    border: none;
+    border-radius: 50%;
+    justify-self: end;
 }

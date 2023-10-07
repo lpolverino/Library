@@ -25,11 +25,12 @@ function addBookToLibrary() {
 function showBooks(){
     document.querySelectorAll('.book').forEach(e => e.remove());
     const table = document.getElementsByClassName("table")[0];
-    myLibrary.forEach((book) =>{
+    myLibrary.forEach((book,index) =>{
         
         const card = document.createElement("div");
         card.classList.add("card");
-        card.classList.add("book")
+        card.classList.add("book");
+        card.dataset.bookIndex = index;
         
         const bookTitle = document.createElement("h2");
         bookTitle.textContent = book.title;
@@ -43,12 +44,24 @@ function showBooks(){
         const bookRead = document.createElement("p");
         bookRead.textContent = book.read?"read":"no read"
 
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete-button");
+        deleteButton.addEventListener("click", () =>{
+            clearCard(index);
+        })
+
         card.appendChild(bookTitle);
         card.appendChild(bookAuthor);
         card.appendChild(bookPages);
         card.appendChild(bookRead);
+        card.appendChild(deleteButton);
         table.appendChild(card);
     })
+}
+
+function clearCard(index){
+    myLibrary.splice(index,1);
+    showBooks();
 }
 
 const  mockBook = new Book("Tokyo Ghoul","Sui Ishida", 216, true)
