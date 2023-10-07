@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --brown: #a16207;
+    --grey-brown: #ffedd5;
+    font-family: 'Playfair Display', serif;
+}
+
+body{
+    display: grid;
+    grid-template-rows: 80px 6fr;
+    height: 100vh;
+}
+
+.header{
+    background-color: var(--brown);
+    grid-row: 1/2;
+}
+header{
+    margin: 10px 50px;
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.main{
+    background-color: var(--grey-brown);
+    grid-row: 2/3;
+}
