@@ -7,6 +7,10 @@
     font-family: 'Playfair Display', serif;
 }
 
+button{
+    cursor: pointer;
+}
+
 body{
     display: grid;
     grid-template-rows: 80px 6fr;
@@ -93,13 +97,14 @@ dialog{
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.3);
-    padding: 2rem 1rem;
+    padding: 0 1rem;
     width: min(50%,400px);
     width: min(50%,400px);
-    position: absolute;
 }
+
 .form{
     display: flex;
+    padding: 2rem 0;
     margin: auto;
 }
 
@@ -112,7 +117,7 @@ form{
 
 .form-row{
     display: grid;
-    grid-template-columns: 50px 1fr;
+    grid-template-columns: 50px 1fr 1px;
     gap: 32px
 }
 
@@ -120,13 +125,42 @@ input{
     padding-left: 10px;
 }
 
-#favDialog > button{
+input + span {
+    position: relative;
+}
+
+input + span::after{
+    content: "*";
+    position: absolute;
+    left: -24px;
+    top: -10px;
+    font-size: 1.2em;
+}
+
+.cancel-button {
+    display: flex;
+    justify-content: end;
+}
+.cancel-button > button{
     width: 24px;
     height: 24px;
     background-image: url("./img/alpha-x-circle-outline.svg");
     background-color: inherit;
     border: none;
-    position: relative;
-    top: 0;
-    left: 350px;
+    margin-top: 8px;
+}
+
+.form-buttons{
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.form-buttons button{
+    padding: 8px 32px;
+    background-color: var(--grey-brown);
+    border: 1px solid black;
+    border-radius: 40px;
 }
