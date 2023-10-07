@@ -18,12 +18,45 @@ body{
     grid-row: 1/2;
 }
 header{
-    margin: 10px 50px;
+    margin: 10px 1em;
     font-weight: 500;
-    font-size: 32px;
+    font-size: 2rem;
+    color: rgb(235, 231, 220);
 }
 
 .main{
     background-color: var(--grey-brown);
     grid-row: 2/3;
+}
+
+.table{
+    margin: 1em;
+    display: grid;
+    grid-template-rows: repeat(auto-fit,1fr);
+    gap:16px;
+}
+
+.card{
+    background-color: rgb(255, 253, 249);
+    border-radius: 10px;
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid rgb(219, 219, 219);
+    box-shadow: 10px 10px rgba(70, 70, 70,0.45);
+    padding: 8px 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3,1fr);
+}
+
+.card h2{
+    grid-row: 1/2;
+}
+
+.card h3 {
+    grid-row:2/3 ;
+}
+
+.card p{
+    grid-row: 3/4;
 }
