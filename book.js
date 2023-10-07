@@ -11,6 +11,10 @@ function Book(title, author, pages, read ){
     }
 }
 
+Book.prototype.toggleRead = function () {
+    this.read = !this.read
+};
+
 function addBookToLibrary() {
     const title = document.getElementById("title").value; 
     const author = document.getElementById("author").value;
@@ -46,15 +50,25 @@ function showBooks(){
 
         const deleteButton = document.createElement("button");
         deleteButton.classList.add("delete-button");
+
+        const toggleReadButton = document.createElement("button");
+        toggleReadButton.classList.add("toggle-button");
+
         deleteButton.addEventListener("click", () =>{
             clearCard(index);
-        })
+        });
+
+        toggleReadButton.addEventListener("click", () =>{
+            book.toggleRead();
+            showBooks();
+        });
 
         card.appendChild(bookTitle);
         card.appendChild(bookAuthor);
         card.appendChild(bookPages);
         card.appendChild(bookRead);
         card.appendChild(deleteButton);
+        card.appendChild(toggleReadButton);
         table.appendChild(card);
     })
 }
