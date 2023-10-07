@@ -45,28 +45,31 @@ function showBooks(){
         const bookPages = document.createElement("p");
         bookPages.textContent = "pages: " + book.pages;
 
-        const bookRead = document.createElement("p");
-        bookRead.textContent = book.read?"read":"no read"
+        /*const bookRead = document.createElement("p");
+        bookRead.textContent = book.read?"read":"no read"*/
 
         const deleteButton = document.createElement("button");
         deleteButton.classList.add("delete-button");
 
         const toggleReadButton = document.createElement("button");
         toggleReadButton.classList.add("toggle-button");
+        toggleReadButton.textContent = book.read? "R":"N";
 
         deleteButton.addEventListener("click", () =>{
             clearCard(index);
         });
 
-        toggleReadButton.addEventListener("click", () =>{
+        toggleReadButton.addEventListener("click", (e) =>{
             book.toggleRead();
+            const button = e.currentTarget
+            button.textContent = book.read? "R":"N"
             showBooks();
         });
 
         card.appendChild(bookTitle);
         card.appendChild(bookAuthor);
         card.appendChild(bookPages);
-        card.appendChild(bookRead);
+        //card.appendChild(bookRead);
         card.appendChild(deleteButton);
         card.appendChild(toggleReadButton);
         table.appendChild(card);
