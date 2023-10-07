@@ -17,17 +17,19 @@ function addBookToLibrary() {
     const pages = document.getElementById("pages").value;
     const read = document.getElementById("read").value;
 
-    const newBook = Book(title, author, pages, read);
+    const newBook = new Book(title, author, pages, read);
     
     myLibrary.push(newBook);
 }
 
 function showBooks(){
+    document.querySelectorAll('.book').forEach(e => e.remove());
     const table = document.getElementsByClassName("table")[0];
     myLibrary.forEach((book) =>{
         
         const card = document.createElement("div");
         card.classList.add("card");
+        card.classList.add("book")
         
         const bookTitle = document.createElement("h2");
         bookTitle.textContent = book.title;
@@ -36,7 +38,7 @@ function showBooks(){
         bookAuthor.textContent = book.author;
 
         const bookPages = document.createElement("p");
-        bookPages.textContent = book.pages;
+        bookPages.textContent = "pages: " + book.pages;
 
         const bookRead = document.createElement("p");
         bookRead.textContent = book.read?"read":"no read"
@@ -49,7 +51,7 @@ function showBooks(){
     })
 }
 
-const  mockBook = new Book("tokyo ghoul","sui ishida", 216, true)
+const  mockBook = new Book("Tokyo Ghoul","Sui Ishida", 216, true)
 
 myLibrary.push(mockBook)
 
@@ -59,3 +61,27 @@ myLibrary.push(mock2Book)
 
 
 showBooks()
+
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector(".card button");
+const closeButton = document.querySelector("dialog button");
+const confirmButton = dialog.querySelector("#confirmBtn");
+
+showButton.addEventListener("click", () =>{
+    dialog.showModal();
+});
+
+closeButton.addEventListener("click", ()=>{
+    dialog.close();
+});
+
+dialog.addEventListener("close", (e) =>{
+    showBooks();
+})
+
+
+confirmBtn.addEventListener("click", (event) => {
+    event.preventDefault(); 
+    addBookToLibrary();
+    dialog.close();
+  });
